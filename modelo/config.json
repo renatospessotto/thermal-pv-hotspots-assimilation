@@ -1,0 +1,183 @@
+{
+ "backbone": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+ "patch": 16,
+ "escala": 2,
+ "escala_lim": [
+  0.75,
+  3.0
+ ],
+ "cel_px": 8,
+ "gsd_ref_cm": 3.0,
+ "z_faixa": [
+  -3.0,
+  8.0
+ ],
+ "paleta": "inferno",
+ "janela_fundo": 9,
+ "K_max": 3.0,
+ "dim_pca": 256,
+ "mad_ref": {
+  "C": 19.310487747192383,
+  "A": 0.5919013619422913,
+  "B": 0.6570546627044678
+ },
+ "preditores": [
+  "1-cos(visada)",
+  "log(GSD/3)",
+  "log(MAD/MAD_ref)",
+  "sen(hora)",
+  "cos(hora)",
+  "falta_geometria",
+  "falta_hora",
+  "nivel_C"
+ ],
+ "painel_limiar": 0.48674941062927246,
+ "painel_AP": 0.9936047689811417,
+ "painel_IoU": 0.9121065488884318,
+ "alerta_limiar": 21.420540046289776,
+ "alerta_variante": "R2",
+ "hfov_tabela": {
+  "M3T": 49.4,
+  "M30T": 50.6,
+  "H20T": 40.6,
+  "H20N": 40.6,
+  "M2EA": 46.4
+ },
+ "cabecas": {
+  "R0": {
+   "variante": "R0",
+   "termos": [],
+   "limiar_logit": 4.6538286209106445
+  },
+  "R1": {
+   "variante": "R1",
+   "termos": [],
+   "limiar_logit": 4.772180557250977
+  },
+  "R2": {
+   "variante": "R2",
+   "termos": [],
+   "limiar_logit": 4.805133819580078
+  },
+  "R3": {
+   "variante": "R2",
+   "termos": [
+    "vies"
+   ],
+   "limiar_logit": 4.736608982086182
+  },
+  "R4": {
+   "variante": "R2",
+   "termos": [
+    "vies",
+    "ganho"
+   ],
+   "limiar_logit": 4.818434238433838
+  },
+  "R5": {
+   "variante": "R2",
+   "termos": [
+    "vies",
+    "ganho",
+    "fonte"
+   ],
+   "limiar_logit": 19.87479591369629
+  }
+ },
+ "imagenet_media": [
+  0.485,
+  0.456,
+  0.406
+ ],
+ "imagenet_desvio": [
+  0.229,
+  0.224,
+  0.225
+ ],
+ "fontes_treino": [
+  "PVHSD",
+  "P16",
+  "P17",
+  "P18"
+ ],
+ "fonte_indice": {
+  "PVHSD": 0,
+  "P16": 1,
+  "P17": 2,
+  "P18": 3
+ },
+ "cfg_completo": {
+  "seed": 42,
+  "pasta_drive": "SCC0287_Solar_v3",
+  "pasta_dados": "SCC0287_Solar_v3_dados",
+  "backbone": "dinov3_b16",
+  "escala": 2,
+  "escala_lim": [
+   0.75,
+   3.0
+  ],
+  "batch": 8,
+  "fontes_loso": [
+   "PVHSD",
+   "P16",
+   "P17",
+   "P18"
+  ],
+  "frac_val": 0.2,
+  "frac_in": [
+   0.6,
+   0.2,
+   0.2
+  ],
+  "variantes": [
+   "R0",
+   "R1",
+   "R2"
+  ],
+  "dim_pca": 256,
+  "neg_dificeis": 64,
+  "neg_aleatorios": 128,
+  "frac_neg_aval": 0.05,
+  "max_celulas_painel": 1500,
+  "janela_fundo": 9,
+  "z_faixa": [
+   -3.0,
+   8.0
+  ],
+  "epocas": 12,
+  "lr": 0.002,
+  "wd_w": 0.0001,
+  "iter_lbfgs": 300,
+  "l2_w": 1e-05,
+  "l2_assim": 0.0001,
+  "K_max": 3.0,
+  "qc_dz_min": 1.0,
+  "qc_treino": true,
+  "ancora_dz_pos": 3.0,
+  "ancora_dz_neg": 0.5,
+  "peso_ancora": 0.1,
+  "sementes": [
+   0,
+   1,
+   2
+  ],
+  "n_boot": 100,
+  "max_perturb": 300,
+  "perturbacoes": [
+   "original",
+   "escala_0.5",
+   "escala_0.33",
+   "ruido",
+   "desfoque",
+   "paleta"
+  ],
+  "max_imagens": null,
+  "limiar_painel": 0.48674941062927246
+ },
+ "nota": "Escore = logit por célula de 8x8 px da imagem original; hotspot se escore >= limiar_logit da cabeça. Níveis: A = radiométrica com GSD, B = radiométrica sem escala confiável, C = só pseudo-cor. Padrão: A/B -> R4 (invariante à câmera), C -> R0 (sem radiometria, a pseudo-cor da câmera funciona melhor). R5 decide pelo critério físico estrito (ΔT_z >= 3) e perde os hotspots fracos que alguns anotadores marcam.",
+ "cabeca_por_nivel": {
+  "A": "R4",
+  "B": "R4",
+  "C": "R0"
+ }
+}

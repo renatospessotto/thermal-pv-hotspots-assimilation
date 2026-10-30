@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solar-hotspots"
+version = "1.0.0"
+description = "Hotspots em usinas solares em imagens térmicas de qualquer drone: DINOv3 congelado + assimilação de dados"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.2",
+  "transformers>=4.56",
+  "safetensors>=0.4",
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pillow>=10",
+  "matplotlib>=3.8",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

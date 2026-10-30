@@ -1,0 +1,23 @@
+# Sistema e ambiente
+.DS_Store
+__MACOSX/
+.venv/
+venv/
+__pycache__/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Artefatos grandes e caches do notebook (ficam no Drive / fora do repo)
+*.zip
+*.tar
+*.npz
+*.npy
+*.pt
+saida_solar_v3/
+dados_v3/
+cache/
+
+# Os pesos do modelo final SÃO versionados (pasta modelo/, ~7 MB)
+*.safetensors
+!modelo/*.safetensors
+exemplos/saida_*.png

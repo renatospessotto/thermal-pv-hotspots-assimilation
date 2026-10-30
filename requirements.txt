@@ -1,0 +1,12 @@
+# Inferência (pacote solar_hotspots)
+torch>=2.2
+transformers>=4.56      # DINOv3 exige uma versão recente
+safetensors>=0.4
+numpy>=1.26
+scipy>=1.11
+pillow>=10
+matplotlib>=3.8
+# Só para rodar o notebook (o Colab já traz)
+pandas
+scikit-learn
+jupyter
